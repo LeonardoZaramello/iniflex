@@ -7,15 +7,11 @@ git clone git@github.com:LeonardoZaramello/iniflex.git
 ```
 ou
 ```bash
-https://github.com/LeonardoZaramello/iniflex.git
+git clone https://github.com/LeonardoZaramello/iniflex.git
 ```
 Entre no diretório clonado:
 ```bash
   cd iniflex
-```
-Instale as dependências:
-```bash
-  mvn package
 ```
 Rode a classe Principal para printar os requesitos no console:
 ```bash
