@@ -51,7 +51,7 @@ public class Principal {
     // • informação de data deve ser exibido no formato dd/mm/aaaa;
     // • informação de valor numérico deve ser exibida no formatado com separador de milhar como
     // ponto e decimal como vírgula.
-    System.out.println("3.3 – Imprimir todos os funcionários com todas suas informações.");
+    System.out.println("3.3 - Imprimir todos os funcionários com todas suas informações.");
 
     for (Employee employee : employees) {
       System.out.println(employee.getAllInfos());
@@ -62,13 +62,15 @@ public class Principal {
     // 3.4 – Os funcionários receberam 10% de aumento de salário, atualizar a lista de funcionários
     // com novo valor.
     System.out.println(
-        "3.4 – Os funcionários receberam 10% de aumento de salário, atualizar a lista de funcionários com novo valor.");
+        "3.4 - Os funcionários receberam 10% de aumento de salário, atualizar a lista de funcionários com novo valor.");
     for (Employee employee : employees) {
-      BigDecimal salary =
-          employee.getSalary().multiply(new BigDecimal(1.1)).setScale(2, RoundingMode.HALF_UP);
+      BigDecimal oldSalary = employee.getSalary();
+      employee.setSalary(
+          employee.getSalary().multiply(new BigDecimal(1.1)).setScale(2, RoundingMode.HALF_UP));
 
-      employee.setSalary(salary);
-      System.out.println(employee.getAllInfos());
+
+      System.out.println(MessageFormat.format("{0} old Salary: {1} - new Salary: {2}",
+          employee.getName(), oldSalary, employee.getSalary()));
     }
     System.out.println("");
 
@@ -93,13 +95,13 @@ public class Principal {
 
 
     // 3.6 – Imprimir os funcionários, agrupados por função.
-    System.out.println("3.6 – Imprimir os funcionários, agrupados por função.");
+    System.out.println("3.6 - Imprimir os funcionários, agrupados por função.");
     System.out.println(employeeRoleMap);
     System.out.println("");
 
 
     // 3.8 – Imprimir os funcionários que fazem aniversário no mês 10 e 12.
-    System.out.println("3.8 – Imprimir os funcionários que fazem aniversário no mês 10 e 12.");
+    System.out.println("3.8 - Imprimir os funcionários que fazem aniversário no mês 10 e 12.");
 
     employees.stream()
         .filter(employee -> employee.getBirthDate().getMonthValue() == 10
@@ -110,7 +112,7 @@ public class Principal {
 
     // 3.9 – Imprimir o funcionário com a maior idade, exibir os atributos: nome e idade.
     System.out.println(
-        "3.9 – Imprimir o funcionário com a maior idade, exibir os atributos: nome e idade.");
+        "3.9 - Imprimir o funcionário com a maior idade, exibir os atributos: nome e idade.");
 
     Employee oldestEmployee = employees.stream().max((actual, next) -> {
       if (actual.getBirthDate().isBefore(next.getBirthDate())) {
@@ -127,7 +129,7 @@ public class Principal {
 
 
     // 3.10 – Imprimir a lista de funcionários por ordem alfabética.
-    System.out.println("3.10 – Imprimir a lista de funcionários por ordem alfabética.");
+    System.out.println("3.10 - Imprimir a lista de funcionários por ordem alfabética.");
     employees.stream().sorted((actual, next) -> actual.getName().compareTo(next.getName()))
         .forEach(employee -> System.out.println(employee.getAllInfos()));
 
@@ -135,7 +137,7 @@ public class Principal {
 
 
     // 3.11 – Imprimir o total dos salários dos funcionários.
-    System.out.println("3.11 – Imprimir o total dos salários dos funcionários.");
+    System.out.println("3.11 - Imprimir o total dos salários dos funcionários.");
 
     BigDecimal totalSalary =
         employees.stream().map(emp -> emp.getSalary()).reduce(BigDecimal::add).get();
@@ -146,7 +148,7 @@ public class Principal {
     // 3.12 – Imprimir quantos salários mínimos ganha cada funcionário, considerando que o salário
     // mínimo é R$1212.00.
     System.out.println(
-        "3.12 – Imprimir quantos salários mínimos ganha cada funcionário, considerando que o salário mínimo é R$1212.00.");
+        "3.12 - Imprimir quantos salários mínimos ganha cada funcionário, considerando que o salário mínimo é R$1212.00.");
 
     for (Employee employee : employees) {
       BigDecimal minWage =
