@@ -17,7 +17,7 @@ Instale as dependências:
 ```bash
   mvn package
 ```
-Rode a classe Principal:
+Rode a classe Principal para printar os requesitos no console:
 ```bash
   java -cp target/iniflex-0.0.1-SNAPSHOT.jar iniflex.main.Principal
 ```
